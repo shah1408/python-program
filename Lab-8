@@ -1,0 +1,37 @@
+#1. Write a program that converts words present in a list into uppercase and stores them in a set.
+
+words=["box","pen","table","laptop"]
+uppercase_set={word.upper()for word in words}
+print(uppercase_set)
+
+#2. Write a program to create a set containing 10 random numbers in the range 15 to 45. Count how many of these numbers are less than 30. Delete all numbers that are greater than 35.
+
+import random
+random_numbers = {random.randint(15,45)for _ in range(10)}
+print("original set:",random_numbers)
+count_less_than_30 = sum(1 for num in random_numbers if num<30)
+print("count of numbers less than 30:", count_less_than_30)
+filtered_numbers = {num for num in random_numbers if num<= 35}
+print("set after removing numbers greater than 35:", filtered_numbers)
+
+#3. Create an empty set. Write a program that adds five new names to this set, modifies one existing name and deletes two names from it.
+
+names_set = set()
+names_set.update(["anshul","sam","yash","diya","khushi","selvi"])
+print("set after adding names:",names_set)
+names_set.discard("yash")
+names_set.add("Abhiraj")
+print("set after modifying a name:",names_set)
+names_set.discard("abhiraj")
+names_set.discard("diya")
+print("set after deleting two names:",names_set)
+
+#4. A set contains names which begin either with A or with B. Write a program to separate out the names into two sets, one containing names beginning with A and another with B.
+
+names={"yash","anshul","sam","abhiraj","selvi"}
+a_names = {name for name in names if name.startswith("a")}
+s_names = {name for name in names if name.startswith("s")}
+y_names = {name for name in names if name.startswith("y")}
+print("names starting with a:", a_names)
+print("names starting with s:", s_names)
+print("names starting with y:",y_names)
