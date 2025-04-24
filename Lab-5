@@ -1,0 +1,124 @@
+#1  Create a list of 5 odd integers using random nos. Similarly create a list of 4 even integers using random nos. Replace the third element of odd integers with a list of 4 even integers. Flattern, sort and print the list. Provide appropriate message at each stage.
+
+import random
+
+odd_numbers = random.sample(range(1, 100, 2), 5)
+print(f"Original list of odd numbers: {odd_numbers}")
+
+even_numbers = random.sample(range(2, 100, 2), 4)
+print(f"List of even numbers: {even_numbers}")
+
+odd_numbers[2] = even_numbers
+print(f"List after replacing third element with even numbers: {odd_numbers}")
+
+flattened_list = [num for sublist in odd_numbers for num in (sublist if isinstance(sublist, list) else [sublist])]
+print(f"Flattened list: {flattened_list}")
+
+sorted_list = sorted(flattened_list)
+print(f"Sorted list: {sorted_list}")
+
+#2  Generate 20 random integers and store them in a list. Accept a number from the user and print position of all occurrences of that number in the list.
+
+import random
+
+nums = [random.randint(1, 50) for _ in range(20)]
+print("List:", nums)
+
+search = int(input("Enter number to search: "))
+positions = [i for i, val in enumerate(nums) if val == search]
+
+if positions:
+    print("Positions:", positions)
+else:
+    print("Number not found.")
+
+#3  Generate 50 random numbers in the range 1 and 30. Remove all duplicate values from the list.
+
+import random
+
+nums = [random.randint(1, 30) for _ in range(50)]
+unique_nums = list(set(nums))
+
+print("Original List:", nums)
+print("Without Duplicates:", unique_nums)
+
+#4  Generate 30 random numbers and put them in a list. Create two more lists – one containing only +ve numbers and another with –ve nos.
+
+import random
+
+nums = [random.randint(-50, 50) for _ in range(30)]
+positive = [n for n in nums if n > 0]
+negative = [n for n in nums if n < 0]
+
+print("All Numbers:", nums)
+print("Positive:", positive)
+print("Negative:", negative)
+
+#5  A list contains 5 strings. Convert all these strings to uppercase.
+
+words = ["apple", "banana", "grape", "mango", "kiwi"]
+upper_words = [word.upper() for word in words]
+
+print("Uppercase Words:", upper_words)
+
+#6  Convert list of temperatures in Fahrenheit degrees to equivalent Celsius degrees.
+
+fahrenheit = [32, 68, 100, 77, 50]
+celsius = [(f - 32) * 5 / 9 for f in fahrenheit]
+
+print("Fahrenheit:", fahrenheit)
+print("Celsius:", celsius)
+
+#7  Write a menu-driven program to implement the stack data structure.
+
+stack = []
+
+while True:
+    print("\n1.Push\n2.Pop\n3.Display\n4.Exit")
+    choice = int(input("Enter choice: "))
+    
+    if choice == 1:
+        val = input("Enter value to push: ")
+        stack.append(val)
+    elif choice == 2:
+        if stack:
+            print("Popped:", stack.pop())
+        else:
+            print("Stack is empty.")
+    elif choice == 3:
+        print("Stack:", stack)
+    elif choice == 4:
+        break
+    else:
+        print("Invalid choice.")
+
+#8  Write a menu-driven program to implement the Queue data structure.
+
+queue = []
+
+while True:
+    print("\n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit")
+    choice = int(input("Enter choice: "))
+    
+    if choice == 1:
+        val = input("Enter value to enqueue: ")
+        queue.append(val)
+    elif choice == 2:
+        if queue:
+            print("Dequeued:", queue.pop(0))
+        else:
+            print("Queue is empty.")
+    elif choice == 3:
+        print("Queue:", queue)
+    elif choice == 4:
+        break
+    else:
+        print("Invalid choice.")
+
+#9  Take two lists of numbers. Create third list of numbers for only those numbers from first list which are not there in 2nd list (use list comprehension).
+
+list1 = [1, 2, 3, 4, 5, 6]
+list2 = [4, 5, 6, 7, 8]
+unique_in_list1 = [x for x in list1 if x not in list2]
+
+print("Result:", unique_in_list1)
