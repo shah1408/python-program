@@ -1,0 +1,63 @@
+#1. Write a program to create three dictionaries and concatenate them to create fourth dictionary.
+
+d1 = {'a1':10, 'a2':20, 'a3':30, 'a4':40, 'a5':50}
+d2 = {'b1':1, 'b2':2, 'b3':3, 'b4':4, 'b5':5}
+d3 = {'c1':100, 'c2':200, 'c3':300, 'c4':400, 'c5':500}
+d4 = {**d1,**d2,**d3}
+print(d4)
+
+#2. Write a program to check whether a dictionary is empty or not.
+
+def dict(d):
+    if d == {}:
+        print("Empty")
+    else:
+        print("Not")
+
+d={'a1':10}
+dict(d)
+
+d1={}
+dict(d1)
+
+#3. Create a dictionary with dept no, employee roll no. and salary. Find out department wise min and maximum of salary.
+
+from collections import defaultdict
+employees = [
+    (101, 1, 50000),
+    (101, 2, 60000),
+    (102, 3, 55000),
+    (102, 4, 75000),
+    (103, 5, 45000),
+    (103, 6, 80000),
+    (101, 7, 52000),
+    (102, 8, 72000),
+    (103, 9, 47000)
+]
+dept_salaries = defaultdict(list)
+for dept_no, emp_roll_no, salary in employees:
+    dept_salaries[dept_no].append(salary)
+dept_min_max = {
+    dept_no: {"min_salary": min(salaries), "max_salary": max(salaries)}
+    for dept_no, salaries in dept_salaries.items()
+}
+for dept, salary_range in dept_min_max.items():
+    print(f"Department {dept}: Min Salary = {salary_range['min_salary']}, Max Salary = {salary_range['max_salary']}")
+
+#4. Write a program that reads a string from the keyboard and creates dictionary containing frequency of each character occurring in the string.
+
+def char_frequency(string):
+    freq_dict ={}
+    for char in string:
+        freq_dict[char]=freq_dict.get(char,0)+1
+        return freq_dict
+string = input("enter a string:")
+result=char_frequency(string)
+print("character frequency:",result)
+
+#5. Create two dictionaries – one containing grocery items and their prices and another containing grocery items and quantity purchased. By using the values from these two dictionaries compute the total bill.
+
+prices ={'apple':50,'kiwi':180,'milk':60,'bread':20}
+quantities={'apple':12,'kiwi':5,'milk':6,'bread':2}
+total_bill=sum(prices[item]*quantities.get(item,0) for item in prices)
+print("total bill:",total_bill)
